@@ -5,6 +5,20 @@
 	"description": "Streetlighting as a service",
 	"version": "1.0.0"
     },
+    "servers": [
+	{
+	    "url": "http://{domain}:{port}/",
+	    "description": "Server",
+	    "variables": {
+		"domain": {
+		    "default": "gateways.rbccps.org"
+		},
+		"port": {
+		    "default": "6550"
+		}
+	    }
+	}
+    ],
     "paths": {
 	"/rbccps-iudx-server/streetlight-manager/register/app/": {
 	    "post": {
@@ -154,11 +168,5 @@
 		}
 	    }
 	}
-    },
-    "servers": [
-	{
-	    "description": "SwaggerHub API Auto Mocking",
-	    "url": "https://virtserver.swaggerhub.com/mukunth/IUDXCreateReservation/1.0.0"
-	}
-    ]
+    }
 }
