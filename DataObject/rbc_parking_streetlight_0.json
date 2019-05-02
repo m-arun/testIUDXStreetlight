@@ -50,6 +50,11 @@
 	    "minimum": 0,
 	    "maximum": 10
 	},
+	"reservation-id": {
+	    "describes": "Registration ID as an response on succesful registration",
+	    "type": "string"
+
+	},
 	"Lights": {
 	    "describes": "IDs of the device on the streetlight ",
 	    "type": "array",
