@@ -20,7 +20,7 @@
 	}
     ],
     "paths": {
-	"/rbccps-iudx-server/streetlight-manager/register/app/": {
+	"/rbccps-iudx-server/streetlight-manager/register/app": {
 	    "post": {
 		"requestBody": {
 		    "content": {
@@ -44,21 +44,7 @@
 			}
 		    }
 		}
-	    },
-	    "servers": [
-		{
-		    "url": "https://{domain}:{port}/",
-		    "description": "",
-		    "variables": {
-			"domain": {
-			    "default": "gateways.rbccps.org"
-			},
-			"port": {
-			    "default": "6550"
-			}
-		    }
-		}
-	    ]
+	    }
 	},
 	"/rbccps-iudx-server/streetlight-manager/write/operation": {
 	    "description": "Operate on the group of reserved resources",
