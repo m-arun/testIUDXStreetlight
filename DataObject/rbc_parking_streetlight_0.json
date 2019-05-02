@@ -55,6 +55,14 @@
 	    "type": "string"
 
 	},
+	"id": {
+	    "describes": "Name of the application",
+	    "type": "string"
+	},
+	"token": {
+	    "describes": "Number assigned to the application",
+	    "type": "string"
+	},
 	"Lights": {
 	    "describes": "IDs of the device on the streetlight ",
 	    "type": "array",
