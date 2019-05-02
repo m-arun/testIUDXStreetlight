@@ -60,7 +60,7 @@
 	    "type": "string"
 	},
 	"token": {
-	    "describes": "Number assigned to the application",
+	    "describes": "ID assigned to the application",
 	    "type": "string"
 	},
 	"Lights": {
