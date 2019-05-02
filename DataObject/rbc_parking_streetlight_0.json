@@ -1,0 +1,66 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "describes": "Streetlight data model for streetlight deployed at RBCCPS parking",
+    "properties": {
+        "location": {
+           "describes": "Physical location of the streetlight", 
+           "$ref": "https://raw.githubusercontent.com/rbccps-iisc/iudx-schemas/master/data_models/schema_defs/locationDefs.json#/definitions/locationSchema"
+        },
+        "deviceModelInfo": {
+            "describes": "Information about the streetlight pole",
+            "$ref": "https://raw.githubusercontent.com/rbccps-iisc/iudx-schemas/master/data_models/schema_defs/miscSchemaDotOrgDefs.json#/definitions/productSchema"
+        },
+        "caseTemperature": {
+            "describes": "Indicates the streetlight case temperature",
+            "type": "number",
+	    "units": "Celsius"
+        },
+        "powerConsumption": {
+            "describes": "Power consumpted by the streetlight device",
+            "type": "number",
+	    "units": "Watt"
+        },
+        "luxOutput":{
+            "describes": "Indicates the ambient luminance",
+            "type": "number",
+	    "units": "lux"
+        },
+	"AppName": {
+	    "describes": "Name of the application service",
+	    "type": "string"
+	},
+	"Policy": {
+	    "describes": "Policy to be adapted by the service",
+	    "type": "string",
+	    "enum": [ "AutoTimer", "Manual", "AutoLux" ]
+	},
+	"brightness": {
+	    "describes": "Policy to be adapted by the service",
+	    "type": "integer",
+	    "units": "percentage"
+	},
+	"PolicyParams": {
+	    "describes": "Parameters provided to adapt a policy",
+	    "type": ""
+	},
+	"MaxStreetlights": {
+	    "describes": "Maximum number of streetlights that can be deployed",
+	    "type": "integer",
+	    "minimum": 0,
+	    "maximum": 10
+	},
+	"Lights": {
+	    "describes": "IDs of the device on the streetlight ",
+	    "type": "array",
+	    "items": [
+		{
+		    "type": "string"
+		}
+	    ]
+	}
+    },
+    "required": [
+        "location"
+    ]
+}
