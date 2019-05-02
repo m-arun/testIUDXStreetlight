@@ -1,0 +1,164 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+	"title": "IUDXStreetlightService",
+	"description": "Streetlighting as a service",
+	"version": "1.0.0"
+    },
+    "paths": {
+	"/rbccps-iudx-server/streetlight-manager/register/app/": {
+	    "post": {
+		"requestBody": {
+		    "content": {
+			"application/json": {
+			    "schema": {
+				"$ref": "#/components/schemas/RegisterAppRequest"
+			    }
+			}
+		    },
+		    "required": true
+		},
+		"responses": {
+		    "200": {
+			"description": "Succesfully registered the app",
+			"content": {
+			    "application/json": {
+				"schema": {
+				    "$ref": "#/components/schemas/RegisterAppResponse"
+				}
+			    }
+			}
+		    }
+		}
+	    },
+	    "servers": [
+		{
+		    "url": "https://{domain}:{port}/",
+		    "description": "",
+		    "variables": {
+			"domain": {
+			    "default": "gateways.rbccps.org"
+			},
+			"port": {
+			    "default": "6550"
+			}
+		    }
+		}
+	    ]
+	},
+	"/rbccps-iudx-server/streetlight-manager/write/operation": {
+	    "description": "Operate on the group of reserved resources",
+	    "post": {
+		"operationId": "wrteOperation",
+		"requestBody": {
+		    "content": {
+			"application/json": {
+			    "schema": {
+				"$ref": "#/components/schemas/WriteOperationRequest"
+			    }
+			}
+		    },
+		    "required": true
+		},
+		"responses": {
+		    "200": {
+			"description": "Response of write operation",
+			"content": {
+			    "application/json": {
+				"schema": {
+				    "$ref": "#/components/schemas/WriteOperationResponse"
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    },
+    "components": {
+	"schemas": {
+	    "RegisterAppRequest": {
+		"title": "Root Type for RegisterAppObject",
+		"description": "Request body for streetlight app service registration",
+		"type": "object",
+		"properties": {
+		    "AppName": {
+			"$ref": "https://raw.githubusercontent.com/m-arun/testIUDXStreetlight/master/DataObject/rbc_parking_streetlight_0.json#/properties/AppName"
+		    },
+		    "MaxStreetlights": {
+			"$ref": "https://raw.githubusercontent.com/m-arun/testIUDXStreetlight/master/DataObject/rbc_parking_streetlight_0.json#/properties/MaxStreetlights"
+		    },
+		    "Policy": {
+			"$ref": "https://raw.githubusercontent.com/m-arun/testIUDXStreetlight/master/DataObject/rbc_parking_streetlight_0.json#/properties/Policy"
+		    },
+		    "PolicyParams": {
+			"$ref": "https://raw.githubusercontent.com/m-arun/testIUDXStreetlight/master/DataObject/rbc_parking_streetlight_0.json#/properties/PolicyParams"
+		    },
+		    "Lights": {
+			"$ref": "https://raw.githubusercontent.com/m-arun/testIUDXStreetlight/master/DataObject/rbc_parking_streetlight_0.json#/properties/Lights"
+		    }
+		},
+		"example": "{\n    \"AppName\": \"App1\",\n    \"MaxStreetlights\": 10,\n    \"Policy\": \"Manual\",\n    \"PolicyParams\": [],\n    \"Lights\": [\n        \"70B3D58FF0031D00\"\n    ]\n}"
+	    },
+	    "RegisterAppResponse": {
+		"title": "Root Type for RegisterAppObject",
+		"description": "Request body for streetlight app service registration",
+		"required": [
+		    "id",
+		    "token"
+		],
+		"type": "object",
+		"properties": {
+		    "id": {
+			"$ref": "https://raw.githubusercontent.com/m-arun/testIUDXStreetlight/master/DataObject/rbc_parking_streetlight_0.json#/properties/AppName"
+		    },
+		    "token": {
+			"$ref": "https://raw.githubusercontent.com/m-arun/testIUDXStreetlight/master/DataObject/rbc_parking_streetlight_0.json#/properties/token"
+		    }
+		},
+		"example": {
+		    "id": "App1",
+		    "token": "abcdef"
+		}
+	    },
+	    "WriteOperationRequest": {
+		"title": "Root Type for WriteOperationRequest",
+		"description": "Data type for the write operation request",
+		"type": "object",
+		"properties": {
+		    "AppName": {
+			"$ref": "https://raw.githubusercontent.com/m-arun/testIUDXStreetlight/master/DataObject/rbc_parking_streetlight_0.json#/properties/AppName"
+		    },
+		    "Policy": {
+			"$ref": "https://raw.githubusercontent.com/m-arun/testIUDXStreetlight/master/DataObject/rbc_parking_streetlight_0.json#/properties/Policy"
+		    },
+		    "brightness": {
+			"$ref": "https://raw.githubusercontent.com/m-arun/testIUDXStreetlight/master/DataObject/rbc_parking_streetlight_0.json#/properties/brightness"
+		    }
+		},
+		"example": "{\n    \"AppName\": \"App1\",\n    \"Policy\": \"Manual\",\n    \"brightness\": 0\n}"
+	    },
+	    "WriteOperationResponse": {
+		"description": "Response obtained when write operation is performed",
+		"required": [
+		    "Response"
+		],
+		"type": "object",
+		"properties": {
+		    "Response": {
+			"enum": [
+			    "Success",
+			    "Fail"
+			]
+		    }
+		}
+	    }
+	}
+    },
+    "servers": [
+	{
+	    "description": "SwaggerHub API Auto Mocking",
+	    "url": "https://virtserver.swaggerhub.com/mukunth/IUDXCreateReservation/1.0.0"
+	}
+    ]
+}
